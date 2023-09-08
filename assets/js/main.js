@@ -17,7 +17,7 @@ const posts = [
         id : 1,
         author : {
             authorName : 'Carlo Carli',
-            authorPhoto : 'https://unsplash.it/200/200?image=<1>'
+            authorPhoto : 'https://unsplash.it/50/50?image=<1>'
         },
         date : '12-21-2021',
         postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
@@ -28,7 +28,7 @@ const posts = [
         id : 2,
         author : {
             authorName : 'Marco Marchi',
-            authorPhoto : 'https://unsplash.it/200/200?image=<2>'
+            authorPhoto : 'https://unsplash.it/50/50?image=<2>'
         },
         date : '10-11-2021',
         postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
@@ -39,7 +39,7 @@ const posts = [
         id : 3,
         author : {
             authorName : 'Luigi Luigio',
-            authorPhoto : 'https://unsplash.it/200/200?image=<3>'
+            authorPhoto : 'https://unsplash.it/50/50?image=<3>'
         },
         date : '24-08-2022',
         postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
@@ -50,7 +50,7 @@ const posts = [
         id : 4,
         author : {
             authorName : 'Carlo Carli',
-            authorPhoto : 'https://unsplash.it/200/200?image=<4>'
+            authorPhoto : 'https://unsplash.it/50/50?image=<4>'
         },
         date : '04-21-2022',
         postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
@@ -61,7 +61,7 @@ const posts = [
         id : 5,
         author : {
             authorName : 'Carlo Carli',
-            authorPhoto : 'https://unsplash.it/200/200?image=<5>'
+            authorPhoto : 'https://unsplash.it/50/50?image=<5>'
         },
         date : '12-05-2021',
         postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
@@ -72,7 +72,7 @@ const posts = [
         id : 6,
         author : {
             authorName : 'Carlo Carli',
-            authorPhoto : 'https://unsplash.it/200/200?image=<6>'
+            authorPhoto : 'https://unsplash.it/50/50?image=<6>'
         },
         date : '06-26-2026',
         postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
