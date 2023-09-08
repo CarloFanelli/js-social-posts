@@ -89,7 +89,7 @@ stampiamo i post del nostro feed.
 posts.forEach(post => {
 
     const postMarkup = `
-    <div class="card my-5">
+    <div id=${post.id} class="card my-5">
                                 <div class="card-header position-relative">
 
                                     <img src="${post.media}" class="rounded-2 card-img" alt="...">
@@ -113,12 +113,9 @@ posts.forEach(post => {
                                     <h4>like</h4>
                                 </div>
                                 <div class="like-counter d-flex justify-content-around align-items-center">
-                                    <h3>piace a</h3>
-                                    <div class="like">
-
-                                        <h4 class="rounded-circle bg-danger">${post.likes}</h4>
-                                    </div>
-                                    <h3>persone</h3>
+                                    <h4>piace a</h4>
+                                        <h3>${post.likes}</h3>
+                                    <h4>persone</h4>
                                 </div>
                               </div>
                             </div>
@@ -127,4 +124,93 @@ posts.forEach(post => {
     const postPositionDOM = document.getElementById('allPost');
 
     postPositionDOM.insertAdjacentHTML('beforeend', postMarkup);
+
 });
+
+/* 
+Milestone 3
+Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
+*/
+
+/* 
+likeButton.addEventListener('click',function(){
+    
+    console.log(likes);
+ 
+}) */
+
+
+// creo una lista di tutti i bottoni
+const likesButton = document.querySelectorAll('.like-button');
+
+// navigo nella lista in modo da assegnare una funzione ad ogni bottone
+
+for (let i = 0; i < likesButton.length ; i++) {
+    
+    like(i);
+    
+}
+
+/**
+ * function to add and remove like
+ * @param {number} index of for cycle 
+ */
+function like(i) {
+
+    // add event listener ad ogni bottone
+    likesButton[i].addEventListener('click',function(){
+
+        if (likesButton[i].classList.contains('liked')) {
+            
+            likesButton[i].classList.remove('liked')
+            posts.forEach(post => {
+
+                if (i + 1  === post.id ) {
+        
+                    post.likes = post.likes - 1;
+        
+                    console.log(post.likes);
+        
+                }
+        
+                });
+
+        }else{
+            likesButton[i].classList.add('liked')
+            posts.forEach(post => {
+
+                if (i + 1  === post.id ) {
+        
+                    post.likes += 1;
+        
+                    console.log(post.likes);
+        
+                }
+        
+                });
+        }
+        
+    })
+    
+}
+// la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
+
+/* function liked(index,) {
+
+    let like = likeButton.like;
+
+    console.log(likeButton.classList, like);
+
+    if (likeButton.classList) {
+
+    }
+} */
+
+posts.forEach(post => {
+    const like = post.likes;
+
+    console.log(like);
+});
+
+console.log(posts.length);
+    

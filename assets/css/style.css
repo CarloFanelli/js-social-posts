@@ -36,22 +36,17 @@
 
 .like-counter {
 
-    .like{
-        width: 2.2rem;
-        height: 2.2rem;
-        margin: 0 0.1rem;
-        text-align: center;
-        color: white;
-    }
-
-    & h4 {
-        margin: 0;
-        text-transform: uppercase;
-        line-height: 2.2rem;
-    }
-
     & h3{
         margin: 0;
+        margin: 0 0.2rem
     }
 
+    & h4{
+        margin: 0;
+    }
+
+}
+
+.liked{
+    color: blue;
 }
