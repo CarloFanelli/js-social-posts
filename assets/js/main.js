@@ -25,7 +25,7 @@ const posts = [
         date: '12-21-2021',
         postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
         media: 'https://unsplash.it/500/300?image=201',
-        likes : 80
+        likes: 80
     },
     {
         id: 2,
@@ -89,46 +89,55 @@ Milestone 2
 stampiamo i post del nostro feed.
 */
 
-posts.forEach(post => {
-
-    const postMarkup = `
-    <div id=${post.id} class="card my-5">
-                                <div class="card-header position-relative">
-
-                                    <img src="${post.media}" class="rounded-2 card-img" alt="...">
-                                    <div class="rounded-5 position-absolute my-author gap-2">
-                                        <img src="${post.author.authorPhoto}" class="rounded-circle card-img" alt="...">
-                                        <div class="author-details">
-                                            <h4>${post.author.authorName}</h4>
-                                            <span>${post.date}</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                              <div class="card-body">
-                                <p class="card-text p-3">${post.postContent}</p>
-        
-                              </div>
-                              <div class="card-footer d-flex justify-content-evenly align-items-center">
-                                <div class="like-button d-flex justify-content-around align-items-center">
-                                    <i class="fa fa-thumbs-up rounded-pill" aria-hidden="true">
-                                    </i>
-                                    <h4>like</h4>
-                                </div>
-                                <div class="like-counter d-flex justify-content-around align-items-center">
-                                    <h4>piace a</h4>
-                                        <h3>${post.likes}</h3>
-                                    <h4>persone</h4>
-                                </div>
-                              </div>
-                            </div>
-                            </div>`
+function getPostInPage(array) {
 
     const postPositionDOM = document.getElementById('allPost');
 
-    postPositionDOM.insertAdjacentHTML('beforeend', postMarkup);
+    postPositionDOM.innerHTML = '';
 
-});
+    array.forEach((post, index) => {
+
+        const postMarkup = `
+        <div id=${post.id} class="card my-5">
+                                    <div class="card-header position-relative">
+    
+                                        <img src="${post.media}" class="rounded-2 card-img" alt="...">
+                                        <div class="rounded-5 position-absolute my-author gap-2">
+                                            <img src="${post.author.authorPhoto}" class="rounded-circle card-img" alt="...">
+                                            <div class="author-details">
+                                                <h4>${post.author.authorName}</h4>
+                                                <span>${post.date}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                  <div class="card-body">
+                                    <p class="card-text p-3">${post.postContent}</p>
+            
+                                  </div>
+                                  <div class="card-footer d-flex justify-content-evenly align-items-center">
+                                    <div class="like-button d-flex justify-content-around align-items-center">
+                                        <i class="fa fa-thumbs-up rounded-pill" aria-hidden="true">
+                                        </i>
+                                        <h4>like</h4>
+                                    </div>
+                                    <div class="like-counter d-flex justify-content-around align-items-center">
+                                        <h4>piace a</h4>
+                                            <h3>${post.likes}</h3>
+                                        <h4>persone</h4>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>`
+
+        postPositionDOM.innerHTML += postMarkup;
+
+    });
+
+}
+
+
+getPostInPage(posts);
 
 /* 
 Milestone 3
@@ -136,63 +145,78 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
 */
 
 // creo una lista di tutti i bottoni
-const likesButton = document.querySelectorAll('.like-button');
 
 // navigo nella lista in modo da assegnare una funzione ad ogni bottone
 
-for (let i = 0; i < likesButton.length ; i++) {
+/* for (let i = 0; i < posts.length; i++) {
     
-    like(i);
+    like(i,likesButton);
     
-}
+} */
+
+const likesButton = document.querySelectorAll('.like-button');
+posts.forEach((post, i) => like(i, likesButton));
+
 
 /**
  * function to add and remove like
  * @param {number} index of for cycle 
  */
-function like(i) {
+
+function like(i, likesButton) {
 
     // add event listener ad ogni bottone
-    likesButton[i].addEventListener('click',function(){
+    likesButton[i].addEventListener('click', function () {
 
         //check if there's yes the like
         if (likesButton[i].classList.contains('liked')) {
-            
-            likesButton[i].classList.remove('liked')
 
             // la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
 
             posts.forEach(post => {
 
-                if (i + 1  === post.id ) {
-        
+                if (i + 1 === post.id) {
+
                     post.likes = post.likes - 1;
-        
+
                     console.log(post.likes);
-        
+
+                    console.log(posts);
+
+                    getPostInPage(posts);
+                    const likesButton = document.querySelectorAll('.like-button');
+                    like(i, likesButton)
+                    likesButton[i].classList.remove('liked')
+
                 }
-                });
 
-        } else{
-            likesButton[i].classList.add('liked')
+            });
 
+        } else {
             // la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
 
             posts.forEach(post => {
 
-                if (i + 1  === post.id ) {
-        
+                if (i + 1 === post.id) {
+
                     post.likes += 1;
-        
+
+                    console.log(post);
+
                     console.log(post.likes);
-                    
+
+                    console.log(posts);
+
+
+                    getPostInPage(posts);
+                    const likesButton = document.querySelectorAll('.like-button');
+                    like(i, likesButton)
+                    likesButton[i].classList.add('liked')
 
                 }
-        
-                });
+            });
         }
-        
+
     })
-    
+
 }
-    
