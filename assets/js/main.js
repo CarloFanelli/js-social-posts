@@ -95,7 +95,7 @@ function getPostInPage(array) {
 
     postPositionDOM.innerHTML = '';
 
-    array.forEach((post, index) => {
+    array.forEach((post) => {
 
         const postMarkup = `
         <div id=${post.id} class="card my-5">
@@ -137,6 +137,7 @@ function getPostInPage(array) {
 }
 
 
+
 getPostInPage(posts);
 
 /* 
@@ -169,44 +170,33 @@ function like(i, likesButton) {
     likesButton[i].addEventListener('click', function () {
 
         //check if there's yes the like
-        if (likesButton[i].classList.contains('liked')) {
 
-            // la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
+        // la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
 
-            posts.forEach(post => {
+        posts.forEach(post => {
+
+            if (post.liked === true) {
 
                 if (i + 1 === post.id) {
 
                     post.likes = post.likes - 1;
 
-                    console.log(post.likes);
-
-                    console.log(posts);
-
                     getPostInPage(posts);
+
+                    post.liked = false;
+
                     const likesButton = document.querySelectorAll('.like-button');
                     like(i, likesButton)
                     likesButton[i].classList.remove('liked')
 
                 }
 
-            });
-
-        } else {
-            // la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
-
-            posts.forEach(post => {
-
+            } else {
                 if (i + 1 === post.id) {
 
                     post.likes += 1;
 
-                    console.log(post);
-
-                    console.log(post.likes);
-
-                    console.log(posts);
-
+                    post.liked = true;
 
                     getPostInPage(posts);
                     const likesButton = document.querySelectorAll('.like-button');
@@ -214,9 +204,13 @@ function like(i, likesButton) {
                     likesButton[i].classList.add('liked')
 
                 }
-            });
-        }
-
-    })
-
+            }
+        });
+    }
+    )
 }
+
+
+posts[0].pippo = 'ciao';
+
+console.log(posts[0]);
