@@ -14,69 +14,117 @@ Per le immagini va bene utilizzare qualsiasi servizio di placeholder ad es. Unsp
 
 const posts = [
     {
-        id : 1,
-        author : {
-            authorName : 'Carlo Carli',
-            authorPhoto : 'https://unsplash.it/50/50?image=<1>'
+        id: 1,
+        author: {
+            authorName: 'Carlo Carli',
+            authorPhoto: 'https://unsplash.it/40/?image=1'
         },
-        date : '12-21-2021',
-        postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
-        media : 'https://unsplash.it/500/300?image=<201>',
-        likes : 80
+        date: '12-21-2021',
+        postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
+        media: 'https://unsplash.it/500/300?image=201',
+        likes: 80
     },
     {
-        id : 2,
-        author : {
-            authorName : 'Marco Marchi',
-            authorPhoto : 'https://unsplash.it/50/50?image=<2>'
+        id: 2,
+        author: {
+            authorName: 'Marco Marchi',
+            authorPhoto: 'https://unsplash.it/40/?image=2'
         },
-        date : '10-11-2021',
-        postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
-        media : 'https://unsplash.it/500/300?image=<202>',
-        likes : 66
+        date: '10-11-2021',
+        postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
+        media: 'https://unsplash.it/500/300?image=202',
+        likes: 66
     },
     {
-        id : 3,
-        author : {
-            authorName : 'Luigi Luigio',
-            authorPhoto : 'https://unsplash.it/50/50?image=<3>'
+        id: 3,
+        author: {
+            authorName: 'Luigi Luigio',
+            authorPhoto: 'https://unsplash.it/40/?image=3'
         },
-        date : '24-08-2022',
-        postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
-        media : 'https://unsplash.it/500/300?image=<203>',
-        likes : 102
+        date: '24-08-2022',
+        postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
+        media: 'https://unsplash.it/500/300?image=203',
+        likes: 102
     },
     {
-        id : 4,
-        author : {
-            authorName : 'Carlo Carli',
-            authorPhoto : 'https://unsplash.it/50/50?image=<4>'
+        id: 4,
+        author: {
+            authorName: 'Carlo Carli',
+            authorPhoto: 'https://unsplash.it/40/?image=4'
         },
-        date : '04-21-2022',
-        postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
-        media : 'https://unsplash.it/500/300?image=<204>',
-        likes : 44
+        date: '04-21-2022',
+        postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
+        media: 'https://unsplash.it/500/300?image=204',
+        likes: 44
     },
     {
-        id : 5,
-        author : {
-            authorName : 'Carlo Carli',
-            authorPhoto : 'https://unsplash.it/50/50?image=<5>'
+        id: 5,
+        author: {
+            authorName: 'Carlo Carli',
+            authorPhoto: 'https://unsplash.it/40/?image=5'
         },
-        date : '12-05-2021',
-        postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
-        media : 'https://unsplash.it/500/300?image=<205>',
-        likes : 55
+        date: '12-05-2021',
+        postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
+        media: 'https://unsplash.it/500/300?image=25',
+        likes: 55
     },
     {
-        id : 6,
-        author : {
-            authorName : 'Carlo Carli',
-            authorPhoto : 'https://unsplash.it/50/50?image=<6>'
+        id: 6,
+        author: {
+            authorName: 'Carlo Carli',
+            authorPhoto: 'https://unsplash.it/40/?image=6'
         },
-        date : '06-26-2026',
-        postContent : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
-        media : 'https://unsplash.it/500/300?image=<206>',
-        likes : 67
+        date: '06-26-2026',
+        postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
+        media: 'https://unsplash.it/500/300?image=206',
+        likes: 67
     },
 ]
+
+/* 
+Milestone 2
+stampiamo i post del nostro feed.
+*/
+
+posts.forEach(post => {
+
+    const postMarkup = `
+    <div class="card my-5">
+                                <div class="card-header position-relative">
+
+                                    <img src="${post.media}" class="rounded-2 card-img" alt="...">
+                                    <div class="rounded-5 position-absolute my-author gap-2">
+                                        <img src="${post.author.authorPhoto}" class="rounded-circle card-img" alt="...">
+                                        <div class="author-details">
+                                            <h4>${post.author.authorName}</h4>
+                                            <span>${post.date}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                              <div class="card-body">
+                                <p class="card-text p-3">${post.postContent}</p>
+        
+                              </div>
+                              <div class="card-footer d-flex justify-content-evenly align-items-center">
+                                <div class="like-button d-flex justify-content-around align-items-center">
+                                    <i class="fa fa-thumbs-up rounded-pill" aria-hidden="true">
+                                    </i>
+                                    <h4>like</h4>
+                                </div>
+                                <div class="like-counter d-flex justify-content-around align-items-center">
+                                    <h3>piace a</h3>
+                                    <div class="like">
+
+                                        <h4 class="rounded-circle bg-danger">${post.likes}</h4>
+                                    </div>
+                                    <h3>persone</h3>
+                                </div>
+                              </div>
+                            </div>
+                            </div>`
+
+    const postPositionDOM = document.getElementById('allPost');
+
+    postPositionDOM.insertAdjacentHTML('beforeend', postMarkup);
+});
