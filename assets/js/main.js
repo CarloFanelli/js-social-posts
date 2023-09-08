@@ -12,6 +12,9 @@ Non è necessario creare date casuali
 Per le immagini va bene utilizzare qualsiasi servizio di placeholder ad es. Unsplash (https://unsplash.it/300/300?image=<id>)
  */
 
+
+//let likes = 0;
+
 const posts = [
     {
         id: 1,
@@ -22,7 +25,7 @@ const posts = [
         date: '12-21-2021',
         postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
         media: 'https://unsplash.it/500/300?image=201',
-        likes: 80
+        likes : 80
     },
     {
         id: 2,
@@ -49,7 +52,7 @@ const posts = [
     {
         id: 4,
         author: {
-            authorName: 'Carlo Carli',
+            authorName: 'Paolo Paoli',
             authorPhoto: 'https://unsplash.it/40/?image=4'
         },
         date: '04-21-2022',
@@ -60,7 +63,7 @@ const posts = [
     {
         id: 5,
         author: {
-            authorName: 'Carlo Carli',
+            authorName: 'Giacomo Giacomi',
             authorPhoto: 'https://unsplash.it/40/?image=5'
         },
         date: '12-05-2021',
@@ -71,10 +74,10 @@ const posts = [
     {
         id: 6,
         author: {
-            authorName: 'Carlo Carli',
+            authorName: 'Pino Pini',
             authorPhoto: 'https://unsplash.it/40/?image=6'
         },
-        date: '06-26-2026',
+        date: '06-26-2023',
         postContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit inventore repellat deserunt, impedit architecto incidunt. Rem laborum nisi similique excepturi.',
         media: 'https://unsplash.it/500/300?image=206',
         likes: 67
@@ -132,14 +135,6 @@ Milestone 3
 Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo. Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
 */
 
-/* 
-likeButton.addEventListener('click',function(){
-    
-    console.log(likes);
- 
-}) */
-
-
 // creo una lista di tutti i bottoni
 const likesButton = document.querySelectorAll('.like-button');
 
@@ -160,9 +155,13 @@ function like(i) {
     // add event listener ad ogni bottone
     likesButton[i].addEventListener('click',function(){
 
+        //check if there's yes the like
         if (likesButton[i].classList.contains('liked')) {
             
             likesButton[i].classList.remove('liked')
+
+            // la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
+
             posts.forEach(post => {
 
                 if (i + 1  === post.id ) {
@@ -172,11 +171,13 @@ function like(i) {
                     console.log(post.likes);
         
                 }
-        
                 });
 
-        }else{
+        } else{
             likesButton[i].classList.add('liked')
+
+            // la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
+
             posts.forEach(post => {
 
                 if (i + 1  === post.id ) {
@@ -184,7 +185,8 @@ function like(i) {
                     post.likes += 1;
         
                     console.log(post.likes);
-        
+                    
+
                 }
         
                 });
@@ -193,24 +195,4 @@ function like(i) {
     })
     
 }
-// la funzione deve riconoscere la posizione del likeButton nell'array e lo stesso index lo ha il post a cui deve variariare il like
-
-/* function liked(index,) {
-
-    let like = likeButton.like;
-
-    console.log(likeButton.classList, like);
-
-    if (likeButton.classList) {
-
-    }
-} */
-
-posts.forEach(post => {
-    const like = post.likes;
-
-    console.log(like);
-});
-
-console.log(posts.length);
     
