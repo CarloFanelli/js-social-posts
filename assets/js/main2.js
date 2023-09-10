@@ -219,6 +219,8 @@ function getLike(post) {
         
         position.classList.add('liked');
 
+        likedPost.push(post.id);
+
     }
 
 }
