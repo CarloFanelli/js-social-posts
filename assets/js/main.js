@@ -102,7 +102,7 @@ function printInPage(postsArray) {
     postsArray.forEach((post, i) => {
 
 
-        const postMarkup = `<div class="card">
+        const postMarkup = `<div id=#post${post.id} class="card">
         <div class=" card-header position-relative">
 
             <img src="${post.media}" class="rounded-2 card-img" alt="...">
@@ -238,6 +238,9 @@ Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e inc
 function addToLikeList(post, list) {
 
     const positionHTML = document.querySelector(`#\\#footer${post.id}`);
+
+    const newList = [];
+
 positionHTML.addEventListener('click',function(){
 
     if (positionHTML.classList.contains('liked')) {
@@ -246,11 +249,27 @@ positionHTML.addEventListener('click',function(){
 
     } else {
 
-        list.splice(index,post.id)
+       
 
     }
 
     console.log(list);
 })
+    
+}
+
+function defaultProfilePicture(post) {
+
+    const letterName = post.authorName
+
+    const name = letterName.chartAt(0);
+
+    const surname = letterName.chartAt(letterName.search(' ') + 1);
+
+    if (post.author.authorPhoto === '') {
+
+
+        
+    }
     
 }
