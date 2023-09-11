@@ -97,7 +97,7 @@ function printInPage(postsArray) {
 
     const postsSpace = document.getElementById('allPost');
 
-    let likeList = [];
+    const likeList = [];
 
     postsArray.forEach((post, i) => {
 
@@ -126,11 +126,11 @@ function printInPage(postsArray) {
 
         postsSpace.insertAdjacentHTML('beforeend', postMarkup);
 
-        likeButton(post);
-
         //console.log(likeButton(post));
 
-        addToLikeList(post,likeList)
+        likeButton(post);
+
+        addToLikeList(post, likeList);
 
 
     });
@@ -161,7 +161,6 @@ function likeButton(post) {
     postSpace.addEventListener('click', function () {
 
         getLike(post);
-
     })
 
 
@@ -178,6 +177,8 @@ function getLike(post) {
     const position = document.querySelector(`#\\#footer${post.id}`);
 
     console.log(position);
+
+    const likeList = [];
 
     if (position.classList.contains('liked')) {
 
@@ -198,14 +199,9 @@ function getLike(post) {
 
         position.innerHTML = likeMarkup
 
-        console.log('clock');
-
-
     } else {
 
         post.likes = post.likes + 1;
-
-        console.log('click');
 
         const likeMarkup = `<div class="like-button d-flex justify-content-around align-items-center">
     <i class="fa fa-thumbs-up rounded-pill" aria-hidden="true">
@@ -239,23 +235,34 @@ function addToLikeList(post, list) {
 
     const positionHTML = document.querySelector(`#\\#footer${post.id}`);
 
-    const newList = [];
+    positionHTML.addEventListener('click', function () {
 
-positionHTML.addEventListener('click',function(){
+        if (positionHTML.classList.contains('liked')) {
 
-    if (positionHTML.classList.contains('liked')) {
+            list.push(post.id)
 
-        list.push(post.id)
+            console.log(list);
 
-    } else {
 
-       
+        } else {
 
-    }
+            for (let i = 0; i < list.length; i++) {
+                const element = list[i];
+                list.forEach((item, i) => {
 
-    console.log(list);
-})
-    
+                    if (list[i] === post.id) {
+
+                        list.splice(i, 1);
+                        console.log(list);
+                    }
+                })
+
+            }
+        }
+
+
+    })
+
 }
 
 function defaultProfilePicture(post) {
@@ -269,7 +276,7 @@ function defaultProfilePicture(post) {
     if (post.author.authorPhoto === '') {
 
 
-        
+
     }
-    
+
 }
